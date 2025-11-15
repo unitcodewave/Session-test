@@ -1,0 +1,15 @@
+{
+  "name": "codewave-whatsapp-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp bot session generator using Baileys",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^5.0.0",
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "fs-extra": "^11.1.1"
+  }
+}

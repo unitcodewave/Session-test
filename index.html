@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeWave - WhatsApp Bot</title>
+</head>
+<body>
+    <h1>WhatsApp Bot Session Generator</h1>
+    <form id="sessionForm">
+        <input type="text" name="number" placeholder="Enter your WhatsApp number" required>
+        <button type="submit">Generate Session</button>
+    </form>
+
+    <p id="status"></p>
+
+    <script>
+        const form = document.getElementById('sessionForm');
+        const status = document.getElementById('status');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const number = form.number.value;
+
+            status.textContent = "Generating session...";
+
+            const res = await fetch("/generate-session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ number })
+            });
+
+            const data = await res.json();
+            status.textContent = data.message || data.error;
+        });
+    </script>
+</body>
+</html>
